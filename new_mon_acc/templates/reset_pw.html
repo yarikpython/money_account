@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row justify-content-center mt-2">
+        <div class="col-md-5 col-sm">
+            <h2 class="text-center">Create New Password</h2>
+            <hr>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+
+                {{ form.password.label(class='form-control-label') }}
+                {% if form.password.errors %}
+                    {{ form.password(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class='form-control') }}
+                {% endif %}
+
+                {{ form.password_conf.label(class='form-control-label') }}
+                {% if form.password_conf.errors %}
+                    {{ form.password_conf(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password_conf.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password_conf(class='form-control') }}
+                {% endif %}
+
+                {{ form.submit(class='btn btn-sm btn-outline-success col mt-3 mb-3') }}
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
